@@ -79,7 +79,7 @@ To get started with the project, follow these steps:
 6. **Toggle dark mode:**
    Switch between light and dark themes for a better user experience.
 
-## Contributing
+<!-- ## Contributing
 
 Contributions are welcome! If you have any suggestions or improvements, feel free to create a pull request or open an issue.
 
@@ -95,6 +95,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 If you have any questions or need further assistance, feel free to reach out to me at [your-email@example.com].
 
----
+--- -->
 
 **Happy chatting!** 🚀
