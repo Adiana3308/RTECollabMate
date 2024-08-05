@@ -10,7 +10,7 @@ import React from "react";
 type Props = {
   imageUrl?: string;
   name: string;
-  options?: {
+  options?: { 
     label: string;
     destructive: boolean;
     onClick: () => void;
@@ -45,7 +45,8 @@ const Header = ({ imageUrl, name, options }: Props) => {
                   className={cn("font-semibold",{
                     "text-destructive":option.destructive,
                   })}
-                  />
+                  >{option.label}</DropdownMenuItem>
+                 
                 )
               })}
             </DropdownMenuContent>

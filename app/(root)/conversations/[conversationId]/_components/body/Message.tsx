@@ -11,6 +11,7 @@ type Props = {
   lastByUser: boolean;
   content: string[];
   createdAt: number;
+  seen?: React.ReactNode;
   type: string;
 };
 
@@ -21,6 +22,7 @@ const Message = ({
   lastByUser,
   content,
   createdAt,
+  seen,
   type,
 }: Props) => {
   const formatTime = (timestamp: number) => {
@@ -47,26 +49,31 @@ const Message = ({
           })}
         >
           {type === "text" ? (
-            <p className="text-wrap break-words whitespace-pre-wrap">
+            <p className="text-wrap break-words whitespace-pre-wrap break-all">
               {content}
             </p>
           ) : null}
-          <p className={cn("text-xs flex w-full my-1",{
-            "text-primary-foreground justify-end":fromCurrentUser,
-            "text-secondary-foreground justify-start":!fromCurrentUser
-          })}>
+          <p
+            className={cn("text-xs flex w-full my-1", {
+              "text-primary-foreground justify-end": fromCurrentUser,
+              "text-secondary-foreground justify-start": !fromCurrentUser,
+            })}
+          >
             {formatTime(createdAt)}
           </p>
         </div>
+        {seen}
       </div>
 
-      <Avatar className={cn("relative w-8 h-8",{
-        "order-2":fromCurrentUser,
-        "order-1":!fromCurrentUser,
-        invisible: lastByUser,
-      })}>
+      <Avatar
+        className={cn("relative w-8 h-8", {
+          "order-2": fromCurrentUser,
+          "order-1": !fromCurrentUser,
+          invisible: lastByUser,
+        })}
+      >
         <AvatarImage src={senderImage} />
-        <AvatarFallback>{senderName.substring(0,1)}</AvatarFallback>
+        <AvatarFallback>{senderName.substring(0, 1)}</AvatarFallback>
       </Avatar>
     </div>
   );

@@ -10,6 +10,8 @@ import Header from "./_components/Header";
 import Body from "./_components/body/Body";
 import ChatInput from "./_components/input/ChatInput";
 import RemoveFriendDialog from "./_components/dialogs/RemoveFriendDialog";
+import DeleteGroupDialog from "./_components/dialogs/DeleteGroupDialog";
+import LeaveGroupDialog from "./_components/dialogs/LeaveGroupDialog";
 
 type Props = {
   params: {
@@ -35,10 +37,24 @@ const ConversationPage = ({ params: { conversationId } }: Props) => {
     </p>
   ) : (
     <ConversationContainer>
-      <RemoveFriendDialog conversationId={conversationId} open={removeFriendDialogOpen} setOpen={setRemoveFriendDialogOpen} />
+      <RemoveFriendDialog
+        conversationId={conversationId}
+        open={removeFriendDialogOpen}
+        setOpen={setRemoveFriendDialogOpen}
+      />
+      <LeaveGroupDialog
+        conversationId={conversationId}
+        open={leaveGroupDialogOpen}
+        setOpen={setLeaveGroupDialogOpen}
+      />
+      <DeleteGroupDialog
+        conversationId={conversationId}
+        open={deleteGroupDialogOpen}
+        setOpen={setDeleteGroupDialogOpen}
+      />
       <Header
         imageUrl={
-          // conversation.isGroup ? undefined : conversation.otherMember.imageUrl  
+          // conversation.isGroup ? undefined : conversation.otherMember.imageUrl
           conversation.isGroup ? undefined : conversation.otherMember?.imageUrl
         }
         name={
@@ -63,6 +79,8 @@ const ConversationPage = ({ params: { conversationId } }: Props) => {
                     setDeleteGroupDialogOpen(true);
                   },
                 },
+              ]
+            : [
                 {
                   label: "Remove Friend",
                   destructive: true,
@@ -71,10 +89,11 @@ const ConversationPage = ({ params: { conversationId } }: Props) => {
                   },
                 },
               ]
-            : []
         }
       />
-      <Body />
+      <Body members={conversation.isGroup?
+        conversation.otherMembers ? conversation.otherMembers : []
+        :conversation.otherMember ? [conversation.otherMember]:[]} />
       <ChatInput />
     </ConversationContainer>
   );
