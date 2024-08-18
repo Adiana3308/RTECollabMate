@@ -23,7 +23,7 @@ This is a real-time chat application built using Next.js and React.js. The appli
 - **Zod:** For schema validation.
 - **Sonner:** For toast notifications.
 - **Lucide Icons:** For UI icons.
-
+<!-- 
 ## Installation
 
 To get started with the project, follow these steps:
@@ -57,7 +57,7 @@ To get started with the project, follow these steps:
     npm run dev
     ```
 
-    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. -->
 
 ## Usage
 
